@@ -1,6 +1,3 @@
-// trying to create struct client and 3 functions initialize_client, get_block, close_client
-
-// code has select and timeout implemented
 #include<time.h>
 #include<stdio.h>
 #include<error.h>
@@ -16,12 +13,6 @@
 #include<sys/types.h>
 #include<arpa/inet.h>
 #include<sys/socket.h>
-
-//#include <sys/errno.h>
-//#include <sys/types.h>
-//#include <netinet/in.h>
-//#include <arpa/inet.h>
-//#include <stdint.h>
 
 #include<dirent.h>
 #define directory "."
