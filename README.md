@@ -48,6 +48,7 @@ To do this, run the command:
 ![image](https://user-images.githubusercontent.com/76866159/106452335-bb559500-64ad-11eb-82ce-66f3bc8215bb.png)
 
 As seen in the picture, in my case the IP is ```192.168.1.106```. 
+
 [Note: The typical IP of a machine starts with either 192.... or 172.... or 10....]
 
 #### STEP II
