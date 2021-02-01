@@ -20,6 +20,7 @@ Keeping this in mind, this TFTP server has the following properties:
   3. __Simplicity__     - Easily understandable code that uses variables, functions and loops in a justified manner     
   4. __Speed__          - Functions that currently take hundereds of lines have been optimised to do the same task in very few lines    
   5. __Intuitive__      - Variable & function names are made to be very intuitive so as to eliminate confusion   
+  6. __Verbose output__ - The code has an option whether you want to print all the details of transfer, or simply just the speed.
 
 ### Concurrency
 This is a unique feature in this TFTP server, not because this server is concurrent (as many others are) but because of how it handles concurrency.   
@@ -48,7 +49,7 @@ To do this, run the command:
 
 ![image](https://user-images.githubusercontent.com/76866159/106452335-bb559500-64ad-11eb-82ce-66f3bc8215bb.png)
 
-As seen in the picture, in my case the IP is ```192.168.1.106``` 
+As the picture, in my case the IP is ```192.168.1.106``` 
 
 [Note: The typical IP of a machine starts with either 192.... or 172.... or 10....]
 
@@ -103,6 +104,10 @@ I will recomment choosing no or 'n' as this information will be irrelevant to al
 ![image](https://user-images.githubusercontent.com/76866159/106453481-66b31980-64af-11eb-9410-fc6711d99064.png)
 
 Voila! Server is all setup and is listening.
+Now all requests made from the client are shown here, along with the client's IP address, and the filname it has requested.
+
+![image](https://user-images.githubusercontent.com/76866159/106455677-85ff7600-64b2-11eb-8741-56ad29a73e30.png)
+
 
 ### Client side
 Client machine can be any machine on the same network (wifi or ethernet or hotspot) as the server. 
@@ -125,4 +130,44 @@ After installing, run the command:
 ![image](https://user-images.githubusercontent.com/76866159/106454231-6f581f80-64b0-11eb-918a-864f5c99c5f3.png)
 
 #### STEP II
-Connect to ther server using the server's IP that we noted in Step II of Server side Usage
+Connect to ther server using the server's IP that we noted in Step I of Server side Usage
+> As the picture, in my case the IP is 192.168.1.106
+
+So to connect to the server IP, run the command:
+``` connect 192.168.1.106```
+
+Replace 192.168.1.106 with the server IP in you case as it may not be the same.
+
+#### STEP III
+Now, we get one of the files that had been stores in the server in Step III of server's usage.
+> I have copied the debian file "TT.deb"
+
+``` get TT.deb```
+Replace TT.deb6 with the filename that you had stored.
+
+#### Wait and watch!
+The transfer will start.
+
+![image](https://user-images.githubusercontent.com/76866159/106455184-dfb37080-64b1-11eb-9991-c4763e5b00a9.png)
+
+
+As soon as the transfer ends, a prompt is shown telling you the time.
+Morover, on the **Server Side** the speed is also shown.
+
+![image](https://user-images.githubusercontent.com/76866159/106455302-05407a00-64b2-11eb-9092-7ce44c9e4e12.png)
+
+
+## Demonstration of concurrency
+In this section **3** concurrent processes are made to transfer a file "TT.deb" top 3 clients concurrently.
+
+![image](https://user-images.githubusercontent.com/76866159/106456536-a419a600-64b3-11eb-93e7-9c7c97deffed.png)
+
+Together, I am going to press ENTER on all the clients.
+
+![image](https://user-images.githubusercontent.com/76866159/106456674-d75c3500-64b3-11eb-9ee6-14e831237e4c.png)
+
+As seen, all three first start and then end one after another. The code works beautifully.
+
+_**Important conclusion, in this methodology, the speed performance with multiple clients is BETTER than single client.
+Traditionally as the number of clients double, the speed halves, but here the speed does not go dow; only increases.**_
+
