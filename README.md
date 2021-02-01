@@ -41,6 +41,16 @@ To implement this, I/O multiplexing using select() has been used. This makes the
 
 ### Server Side
 #### STEP I
+Before the actual setup, you need to note down the server computer's IP address so that it may be used later on. 
+To do this, run the command:
+``` sudo ifconfig ```
+
+![image](https://user-images.githubusercontent.com/76866159/106452335-bb559500-64ad-11eb-82ce-66f3bc8215bb.png)
+
+As seen in the picture, in my case the IP is ```192.168.1.106```. 
+[Note: The typical IP of a machine starts with either 192.... or 172.... or 10....]
+
+#### STEP II
 On the machine where you want the server, create a new empty folder and download (or copy-paste) "tftp.c".
         OR
 Simply run the command: 
@@ -55,7 +65,7 @@ Simply run the command:
  
  ![image](https://user-images.githubusercontent.com/76866159/106451291-5c435080-64ac-11eb-8e73-11a165b74bbb.png)
 
-#### STEP II
+#### STEP III
 Now, to compile the program, run the command:   
  ``` gcc tftp.c ```
  
@@ -63,7 +73,7 @@ A new file "a.out" may have been created.
 
 ![image](https://user-images.githubusercontent.com/76866159/106451565-c3f99b80-64ac-11eb-965d-3bc36510a3e5.png)
 
-#### STEP III
+#### STEP IV
 Now, to run the program, run the command:   
  ``` sudo ./a.out 69```
  
@@ -71,7 +81,7 @@ Now, to run the program, run the command:
 
 [Note: if you are a networking geek, you may change the 69 to any other port number, but keep in mind that all TFTP clients connect to port 69 by default]
 
-#### STEP IV
+#### STEP V
 
 
 
