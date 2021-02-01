@@ -40,6 +40,35 @@ To implement this, I/O multiplexing using select() has been used. This makes the
 ## Usage
 
 ### Server Side
-On the machine where you want the server, create a new empty folder and download "tftp.c".
-To do this you may either copy-paste the code or simple run the command: 
+#### STEP I
+On the machine where you want the server, create a new empty folder and download (or copy-paste) "tftp.c".
+        OR
+Simply run the command: 
+
+``` sudo git clone https://github.com/yuvrajmalhi/TFTP-Single-Process-server.git ```
+
+ ![image](https://user-images.githubusercontent.com/76866159/106451230-433a9f80-64ac-11eb-91c1-6fe57370b7f4.png)
+
+ and then run the command:   
+ ``` cd TFTP-Single-Process-server/ ```
+ 
+ Here you may check that two files may have been created.
+ 
+ ![image](https://user-images.githubusercontent.com/76866159/106451291-5c435080-64ac-11eb-8e73-11a165b74bbb.png)
+
+#### STEP II
+Now, to compile the program, run the command:   
+ ``` gcc tftp.c ```
+A new file "a.out" may have been created.
+
+![image](https://user-images.githubusercontent.com/76866159/106451565-c3f99b80-64ac-11eb-965d-3bc36510a3e5.png)
+
+#### STEP III
+Now, to run the program, run the command:   
+ ``` sudo ./a.out ```
+
+
+
+
+
 
