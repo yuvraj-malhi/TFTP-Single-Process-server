@@ -40,6 +40,7 @@ To implement this, I/O multiplexing using select() has been used. This makes the
 ## Usage
 
 ### Server Side
+
 #### STEP I
 Before the actual setup, you need to note down the server computer's IP address so that it may be used later on. 
 To do this, run the command:
@@ -47,7 +48,7 @@ To do this, run the command:
 
 ![image](https://user-images.githubusercontent.com/76866159/106452335-bb559500-64ad-11eb-82ce-66f3bc8215bb.png)
 
-As seen in the picture, in my case the IP is ```192.168.1.106```. 
+As seen in the picture, in my case the IP is ```192.168.1.106``` 
 
 [Note: The typical IP of a machine starts with either 192.... or 172.... or 10....]
 
@@ -67,6 +68,20 @@ Simply run the command:
  ![image](https://user-images.githubusercontent.com/76866159/106451291-5c435080-64ac-11eb-8e73-11a165b74bbb.png)
 
 #### STEP III
+Now, copy all the files into the current folder that you may want to transfer to the clients later.
+Use the command:
+
+```cd <file location> ./```
+
+Replace ```<file location>``` with the actual location of the file. 
+
+
+I have copied the debian file "TT.deb"
+
+![image](https://user-images.githubusercontent.com/76866159/106453208-f4423980-64ae-11eb-95e6-5f66aa1bf8b2.png)
+
+
+#### STEP IV
 Now, to compile the program, run the command:   
  ``` gcc tftp.c ```
  
@@ -74,7 +89,7 @@ A new file "a.out" may have been created.
 
 ![image](https://user-images.githubusercontent.com/76866159/106451565-c3f99b80-64ac-11eb-965d-3bc36510a3e5.png)
 
-#### STEP IV
+#### STEP V
 Now, to run the program, run the command:   
  ``` sudo ./a.out 69```
  
@@ -82,10 +97,32 @@ Now, to run the program, run the command:
 
 [Note: if you are a networking geek, you may change the 69 to any other port number, but keep in mind that all TFTP clients connect to port 69 by default]
 
-#### STEP V
+On the prompt, the program asks if you want to print everything that goes on in the file transfer or just the basics.
+I will recomment choosing no or 'n' as this information will be irrelevant to all other than networking folks.
+
+![image](https://user-images.githubusercontent.com/76866159/106453481-66b31980-64af-11eb-9410-fc6711d99064.png)
+
+Voila! Server is all setup and is listening.
+
+### Client side
+Client machine can be any machine on the same network (wifi or ethernet or hotspot) as the server. 
+For the sake of demonstration, the client may be on the server machine also. That's what I will do.
+
+#### STEP I
+Kali users may skip this step.
+For all others, check if you have a TFTP client. To to this, run the command:
+```sudo tftp```
 
 
+If an error is shown then you have to install it on your system. So run the command:
+``` sudo apt install tftp```
 
+![image](https://user-images.githubusercontent.com/76866159/106454080-3fa91780-64b0-11eb-8ced-88f51cdfa583.png)
 
+After installing, run the command:
+``` sudo tftp```
 
+![image](https://user-images.githubusercontent.com/76866159/106454231-6f581f80-64b0-11eb-918a-864f5c99c5f3.png)
 
+#### STEP II
+Connect to ther server using the server's IP that we noted in Step II of Server side Usage
