@@ -44,7 +44,6 @@ To implement this, I/O multiplexing using select() has been used. This makes the
 On the machine where you want the server, create a new empty folder and download (or copy-paste) "tftp.c".
         OR
 Simply run the command: 
-
 ``` sudo git clone https://github.com/yuvrajmalhi/TFTP-Single-Process-server.git ```
 
  ![image](https://user-images.githubusercontent.com/76866159/106451230-433a9f80-64ac-11eb-91c1-6fe57370b7f4.png)
@@ -59,13 +58,20 @@ Simply run the command:
 #### STEP II
 Now, to compile the program, run the command:   
  ``` gcc tftp.c ```
+ 
 A new file "a.out" may have been created.
 
 ![image](https://user-images.githubusercontent.com/76866159/106451565-c3f99b80-64ac-11eb-965d-3bc36510a3e5.png)
 
 #### STEP III
 Now, to run the program, run the command:   
- ``` sudo ./a.out ```
+ ``` sudo ./a.out 69```
+ 
+ ![image](https://user-images.githubusercontent.com/76866159/106451873-2b175000-64ad-11eb-9d2a-9383c1646c38.png)
+
+[Note: if you are a networking geek, you may change the 69 to any other port number, but keep in mind that all TFTP clients connect to port 69 by default]
+
+#### STEP IV
 
 
 
