@@ -21,6 +21,7 @@ Keeping this in mind, this TFTP server has the following properties:
   4. __Speed__          - Functions that currently take hundereds of lines have been optimised to do the same task in very few lines    
   5. __Intuitive__      - Variable & function names are made to be very intuitive so as to eliminate confusion   
   6. __Verbose output__ - The code has an option whether you want to print all the details of transfer, or simply just the speed.
+  7. __Timeout__        - Cancels transfer on 5 seconds of inactivity from client. Saves resources.
 
 ### Concurrency
 This is a unique feature in this TFTP server, not because this server is concurrent (as many others are) but because of how it handles concurrency.   
@@ -167,6 +168,9 @@ Together, I am going to press ENTER on all the clients.
 ![image](https://user-images.githubusercontent.com/76866159/106456674-d75c3500-64b3-11eb-9ee6-14e831237e4c.png)
 
 As seen, all three first start and then end one after another. The code works beautifully.
+
+### Timeout
+This program also implements timeouts. That is, if a client does not respond in 5 seconds due to inactivity, network issues or anything else, then that client's transfer is closed, thereby saving the servers resources.
 
 _**Important conclusion, in this methodology, the speed performance with multiple clients is BETTER than single client.
 Traditionally as the number of clients double, the speed halves, but here the speed does not go dow; only increases.**_
