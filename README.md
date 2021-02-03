@@ -63,7 +63,7 @@ Simply run the command:
  ![image](https://user-images.githubusercontent.com/76866159/106451230-433a9f80-64ac-11eb-91c1-6fe57370b7f4.png)
 
  and then run the command:   
- ``` cd TFTP-Single-Process-server/ ```
+ ``` cp TFTP-Single-Process-server/ ```
  
  Here you may check that two files may have been created.
  
