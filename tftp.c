@@ -240,6 +240,10 @@ void main(int argc, char ** argv)
 		perror("LISTEN: Socket");
 		exit(0); 
 	}
+	
+	int tttt = 1; 
+	setsockopt(L_FD, SOL_SOCKET, SO_REUSEADDR, &tttt , sizeof(int));
+
 
 	localbind.sin_family       = AF_INET;
 	localbind.sin_addr.s_addr  = htonl(INADDR_ANY);
