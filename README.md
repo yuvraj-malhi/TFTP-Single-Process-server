@@ -31,6 +31,9 @@ A traditional server would create a new child process or a new thread (in the ca
 ![image](https://user-images.githubusercontent.com/76866159/106448570-f43f3b00-64a8-11eb-9c48-04cb430ed682.png)   
 
 In the above picture, say if a new "Client C" were to connect, then another server child process (or thread) would be created.
+[Note: Go see my single process server at *https://github.com/yuvrajmalhi/TFTP-Multi-Process-server* ]
+
+
 But this implementation has a very major flaw: as the number of child processes (or threads) increase, the server becomes **exponentially slow.**  
 
 ![image](https://user-images.githubusercontent.com/76866159/106449420-f6ee6000-64a9-11eb-9cb8-44e45a52c106.png)
@@ -174,6 +177,7 @@ This program also implements timeouts. That is, if a client does not respond in 
 
 _**Important conclusion, in this methodology, the speed performance with multiple clients is BETTER than single client.
 Traditionally as the number of clients double, the speed halves, but here the speed does not go dow; only increases.**_
+
 
 Do share if you liked my work. Thanks!
 
