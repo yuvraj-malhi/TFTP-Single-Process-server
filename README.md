@@ -28,15 +28,13 @@ This is a unique feature in this TFTP server, not because this server is concurr
 
 A traditional server would create a new child process or a new thread (in the case for multi-threaded concurrency) for each new client. 
 
-![image](https://user-images.githubusercontent.com/76866159/106448570-f43f3b00-64a8-11eb-9c48-04cb430ed682.png)   
-
-In the above picture, say if a new "Client C" were to connect, then another server child process (or thread) would be created.
+In the below picture, say if a new "Client C" were to connect, then another server child process (or thread) would be created.
 [Note: Go see my single process server at *https://github.com/yuvrajmalhi/TFTP-Multi-Process-server* ]
 
+![1](https://user-images.githubusercontent.com/76866159/107152058-e21f3a00-698b-11eb-9cd9-61489dbdca16.png)
 
 But this implementation has a very major flaw: as the number of child processes (or threads) increase, the server becomes **exponentially slow.**  
 
-![image](https://user-images.githubusercontent.com/76866159/106449420-f6ee6000-64a9-11eb-9cb8-44e45a52c106.png)
 
 To handle this problem, a "single child" concurrent server would work extremeley well. It would only occupy the computional load of a single process while also parallely be able to serve many more clients with ease than a multi process server. 
 To implement this, I/O multiplexing using select() has been used. This makes the system calls non-blocking. Thus when a server calls select(), it sees if client A has not sent anything, without wasting its time, the server would see if client B has sent anything. This will continue till atleast one of the clients have sent something, then that will be processed and the server will call select() again.
