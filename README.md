@@ -38,142 +38,60 @@ To handle this problem, a "single child" concurrent server would works very well
 To implement this, I/O multiplexing using non-blocking select() has been used. Thus when a server calls select(), it sees if client A has not sent anything, without wasting its time, the server would see if client B has sent anything. This will continue till atleast one of the clients have sent something, then that will be processed and the server will call select() again.
 
 
+
 ## Usage
+### Initialize Server
+Run the following commands to get started: 
 
-### Server Side
-
-#### STEP I
-Before the actual setup, you need to note down the server computer's IP address so that it may be used later on. 
-To do this, run the command:
-``` sudo ifconfig ```
-
-![image](https://user-images.githubusercontent.com/76866159/106452335-bb559500-64ad-11eb-82ce-66f3bc8215bb.png)
-
-As the picture, in my case the IP is ```192.168.1.106``` 
-
-[Note: The typical IP of a machine starts with either 192.... or 172.... or 10....]
-
-#### STEP II
-On the machine where you want the server, create a new empty folder and download (or copy-paste) "tftp.c".
-        OR
-Simply run the command: 
-``` sudo git clone https://github.com/yuvrajmalhi/TFTP-Single-Process-server.git ```
-
- ![image](https://user-images.githubusercontent.com/76866159/106451230-433a9f80-64ac-11eb-91c1-6fe57370b7f4.png)
-
- and then run the command:   
- ``` cp TFTP-Single-Process-server/ ```
- 
- Here you may check that two files may have been created.
- 
- ![image](https://user-images.githubusercontent.com/76866159/106451291-5c435080-64ac-11eb-8e73-11a165b74bbb.png)
-
-#### STEP III
-Now, copy all the files into the current folder that you may want to transfer to the clients later.
-Use the command:
-
-```cd <file location> ./```
-
-Replace ```<file location>``` with the actual location of the file. 
-
-
-I have copied the debian file "TT.deb"
-
-![image](https://user-images.githubusercontent.com/76866159/106453208-f4423980-64ae-11eb-95e6-5f66aa1bf8b2.png)
-
-
-#### STEP IV
-Now, to compile the program, run the command:   
- ``` gcc tftp.c ```
- 
-A new file "a.out" may have been created.
-
-![image](https://user-images.githubusercontent.com/76866159/106451565-c3f99b80-64ac-11eb-965d-3bc36510a3e5.png)
-
-#### STEP V
-Now, to run the program, run the command:   
- ``` sudo ./a.out 69```
- 
- ![image](https://user-images.githubusercontent.com/76866159/106451873-2b175000-64ad-11eb-9d2a-9383c1646c38.png)
+```sudo ifconfig``` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; -  &emsp; *Check ther server IP. Mine is ```10.0.2.12```*        
+``` sudo git clone https://github.com/yuvrajmalhi/TFTP-Single-Process-server.git```           
+```cd TFTP-Single-Process-server/```           
+```cp <file location> ./``` &emsp;&emsp;&nbsp; -  &emsp; *Copy the file to server location. I have chosen 'TT.deb' for demonstration*          
+```gcc tftp.c -o server```           
+```ls```  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; - &emsp;  *Confirm that ther 'server' executable and file are present*            
+```sudo ./server 69```         
 
 [Note: if you are a networking geek, you may change the 69 to any other port number, but keep in mind that all TFTP clients connect to port 69 by default]
 
 On the prompt, the program asks if you want to print everything that goes on in the file transfer or just the basics.
 I will recomment choosing no or 'n' as this information will be irrelevant to all other than networking folks.
 
-![image](https://user-images.githubusercontent.com/76866159/106453481-66b31980-64af-11eb-9410-fc6711d99064.png)
+Here's how:
+![Sing_proc_Server_Setup](https://user-images.githubusercontent.com/76866159/134984325-af5e7d9b-7b4a-4526-90e6-46741c17d8ac.gif)
 
-Voila! Server is all setup and is listening.
-Now all requests made from the client are shown here, along with the client's IP address, and the filname it has requested.
-
-![image](https://user-images.githubusercontent.com/76866159/106455677-85ff7600-64b2-11eb-8741-56ad29a73e30.png)
+Voila! Server is all setup.
 
 
-### Client side
-Client machine can be any machine on the same network (wifi or ethernet or hotspot) as the server. 
-For the sake of demonstration, the client may be on the server machine also. That's what I will do.
 
-#### STEP I
-Kali users may skip this step.
-For all others, check if you have a TFTP client. To to this, run the command:
-```sudo tftp```
+## Client
+### Usage
+Run the following commands to get started: 
 
+``` sudo apt-get install tftp``` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; -  &emsp; *Install tftp client*        
+``` sudo tftp```           
+``` connect 10.0.2.12``` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; -  &emsp; *Connect to server's IP*        
+``` get TT.deb ``` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; -  &emsp; *Get the file 'TT.deb' from server*  
 
-If an error is shown then you have to install it on your system. So run the command:
-``` sudo apt install tftp```
-
-![image](https://user-images.githubusercontent.com/76866159/106454080-3fa91780-64b0-11eb-8ced-88f51cdfa583.png)
-
-After installing, run the command:
-``` sudo tftp```
-
-![image](https://user-images.githubusercontent.com/76866159/106454231-6f581f80-64b0-11eb-918a-864f5c99c5f3.png)
-
-#### STEP II
-Connect to ther server using the server's IP that we noted in Step I of Server side Usage
-> As the picture, in my case the IP is 192.168.1.106
-
-So to connect to the server IP, run the command:
-``` connect 192.168.1.106```
-
-Replace 192.168.1.106 with the server IP in you case as it may not be the same.
-
-#### STEP III
-Now, we get one of the files that had been stores in the server in Step III of server's usage.
-> I have copied the debian file "TT.deb"
-
-``` get TT.deb```
-Replace TT.deb6 with the filename that you had stored.
-
-#### Wait and watch!
-The transfer will start.
-
-![image](https://user-images.githubusercontent.com/76866159/106455184-dfb37080-64b1-11eb-9991-c4763e5b00a9.png)
+Follow here:
+![Sing_proc_client_setup](https://user-images.githubusercontent.com/76866159/134984990-9e5413f8-26da-4597-8fa4-c726e0ac1ca2.gif)
 
 
-As soon as the transfer ends, a prompt is shown telling you the time.
-Morover, on the **Server Side** the speed is also shown.
+As soon as the transfer ends, a prompt is shown telling you the size and time of file transfer.
+Morover, on the **Server Side** the speed is also shown in mbps.
 
-![image](https://user-images.githubusercontent.com/76866159/106455302-05407a00-64b2-11eb-9092-7ce44c9e4e12.png)
+In this case, 500.4 Mb was transferred in 39.5 seconds. Transfer speed = **12.67 Mb/s**.
+
+### Concurrent Transfer
+To demonstrate concurrency, **3** clients will receive file "TT.deb" top 3 clients parallely.
+![Sing_proc_concurrency](https://user-images.githubusercontent.com/76866159/134985868-7883ec06-3862-41b9-87b7-de5b934337d4.gif)
+
+As the number of clients triple (from 1 to 3), the speed does not change proportionally (12.6 Mb/s to 9 Mb/s).
 
 
-## Demonstration of concurrency
-In this section **3** concurrent processes are made to transfer a file "TT.deb" top 3 clients concurrently.
+[Note: Go see my multi process server at *https://github.com/yuvrajmalhi/TFTP-Multi-Process-server* ]
 
-![image](https://user-images.githubusercontent.com/76866159/106456536-a419a600-64b3-11eb-93e7-9c7c97deffed.png)
-
-Together, I am going to press ENTER on all the clients.
-
-![image](https://user-images.githubusercontent.com/76866159/106456674-d75c3500-64b3-11eb-9ee6-14e831237e4c.png)
-
-As seen, all three first start and then end one after another. The code works beautifully.
-
-### Timeout
-This program also implements timeouts. That is, if a client does not respond in 5 seconds due to inactivity, network issues or anything else, then that client's transfer is closed, thereby saving the servers resources.
-
-_**Important conclusion, in this methodology, the speed performance with multiple clients is BETTER than single client.
-Traditionally as the number of clients double, the speed halves, but here the speed does not go dow; only increases.**_
-
+_**Important conclusion, in single-process servers, the speed performance for numerous clients is BETTER than mult-process servers.
+Traditionally as the number of clients double, the speed halves, but here the speed does not go down.**_
 
 Do share if you liked my work. Thanks!
 
