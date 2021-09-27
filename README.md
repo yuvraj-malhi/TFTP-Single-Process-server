@@ -57,7 +57,7 @@ On the prompt, the program asks if you want to print everything that goes on in 
 I will recomment choosing no or 'n' as this information will be irrelevant to all other than networking folks.
 
 Here's how:
-![Sing_proc_Server_Setup](https://user-images.githubusercontent.com/76866159/134984325-af5e7d9b-7b4a-4526-90e6-46741c17d8ac.gif)
+![Sing_proc_Server_Setup](https://user-images.githubusercontent.com/76866159/134986646-b250a48b-d7ad-4227-84a5-f0869aa5f369.gif)
 
 Voila! Server is all setup.
 
@@ -73,7 +73,7 @@ Run the following commands to get started:
 ``` get TT.deb ``` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; -  &emsp; *Get the file 'TT.deb' from server*  
 
 Follow here:
-![Sing_proc_client_setup](https://user-images.githubusercontent.com/76866159/134984990-9e5413f8-26da-4597-8fa4-c726e0ac1ca2.gif)
+![Sing_proc_client_setup](https://user-images.githubusercontent.com/76866159/134986667-06431a4a-6d7d-4378-b28a-5f42d857cbac.gif)
 
 
 As soon as the transfer ends, a prompt is shown telling you the size and time of file transfer.
@@ -83,7 +83,7 @@ In this case, 500.4 Mb was transferred in 39.5 seconds. Transfer speed = **12.67
 
 ### Concurrent Transfer
 To demonstrate concurrency, **3** clients will receive file "TT.deb" top 3 clients parallely.
-![Sing_proc_concurrency](https://user-images.githubusercontent.com/76866159/134985868-7883ec06-3862-41b9-87b7-de5b934337d4.gif)
+![Sing_proc_concurrency](https://user-images.githubusercontent.com/76866159/134986619-ded05aa1-f1e6-4ea7-943a-439a1de740e2.gif)
 
 As the number of clients triple (from 1 to 3), the speed does not change proportionally (12.6 Mb/s to 9 Mb/s).
 
